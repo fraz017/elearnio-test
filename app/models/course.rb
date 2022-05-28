@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
   belongs_to :author
-  has_and_belongs_to_many :talents
+  has_many :courses_talents
+  has_many :talents, through: :courses_talents
   
   validates :name, presence: true
 end
