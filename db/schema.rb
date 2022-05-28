@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_05_28_115730) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.bigint "author_id", null: false
+    t.bigint "author_id"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_115730) do
   end
 
   create_table "courses_talents", force: :cascade do |t|
-    t.bigint "talent_id", null: false
-    t.bigint "course_id", null: false
+    t.bigint "talent_id"
+    t.bigint "course_id"
     t.index ["course_id"], name: "index_courses_talents_on_course_id"
     t.index ["talent_id"], name: "index_courses_talents_on_talent_id"
   end
@@ -47,7 +47,4 @@ ActiveRecord::Schema.define(version: 2022_05_28_115730) do
     t.index ["author_id"], name: "index_talents_on_author_id"
   end
 
-  add_foreign_key "courses", "authors"
-  add_foreign_key "courses_talents", "courses"
-  add_foreign_key "courses_talents", "talents"
 end
